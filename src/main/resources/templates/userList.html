@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>信息列表</title>
+    <link rel="stylesheet" href="layui-v2.5.6/layui/css/layui.css"/>
+</head>
+<body>
+<table class="layui-table" style="width: 100%">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>名字</th>
+        <th>年龄</th>
+        <th>地址</th>
+        <th>电话</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${userLists}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.address}"></td>
+        <td th:text="${user.phone}"></td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+<script src="layui-v2.5.6/layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+            ,form = layui.form;
+
+        //layer.msg('Hello World');
+    });
+</script>
+</html>
