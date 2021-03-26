@@ -9,4 +9,15 @@ public class TestUser {
     private Integer age;
     private String address;
     private String phone;
+
+    @Override
+    public String toString() {
+        return "TestUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

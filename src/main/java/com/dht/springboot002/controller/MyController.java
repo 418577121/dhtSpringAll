@@ -38,6 +38,10 @@ public class MyController {
     @RequestMapping("/createUser")
     @ResponseBody
     public ResponseData createUser(TestUser testUser) {
+        //System.out.println(testUser);
+        if ("".equals(testUser.getName()) || testUser.getName() == null){
+            return new ResponseData(500,"添加失败");
+        }
         int result = userService.addUser(testUser);
         if (result > 0) {
            return new ResponseData(200,"添加成功");
