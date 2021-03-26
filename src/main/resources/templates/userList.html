@@ -101,6 +101,7 @@
             "phone" : phone
         }
          console.log(JSON.stringify(testUser));
+
         $.ajax({
             url:'createUser',
             type: 'post',
@@ -111,6 +112,11 @@
               if(data.code == 200) {
                   layer.closeAll();
                   layer.msg(data.message);
+                  setTimeout(funcName,2000);
+                  function funcName() {
+                       location.reload();
+                  }
+
               }else {
                   layer.msg(data.message);
               }
