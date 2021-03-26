@@ -6,10 +6,13 @@ import com.dht.springboot002.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MyController {
@@ -35,13 +38,18 @@ public class MyController {
         return "test";
     }
 
-    @RequestMapping("/createUser")
+    @RequestMapping(value = "/createUser",produces ="application/json")
     @ResponseBody
-    public ResponseData createUser(TestUser testUser) {
-        //System.out.println(testUser);
-        if ("".equals(testUser.getName()) || testUser.getName() == null){
-            return new ResponseData(500,"添加失败");
+    public ResponseData createUser(@RequestBody Map<String,Object> params ) {
+        if ("".equals(params.get("name").toString()) || params.get("name").toString() == null){
+            return new ResponseData(500,"添加失败--数据为空");
         }
+        TestUser testUser = new TestUser();
+        testUser.setName(params.get("name").toString());
+        testUser.setAge(Integer.parseInt(String.valueOf(params.get("age"))));
+        testUser.setPhone(params.get("phone").toString());
+        testUser.setAddress(params.get("address").toString());
+
         int result = userService.addUser(testUser);
         if (result > 0) {
            return new ResponseData(200,"添加成功");
