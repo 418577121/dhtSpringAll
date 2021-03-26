@@ -17,4 +17,9 @@ public class UserServiceImpl implements UserService {
     public List<TestUser> findAllUser() {
         return userMapper.selectAllUser();
     }
+
+    @Override
+    public int addUser(TestUser testUser) {
+        return userMapper.insertUser(testUser);
+    }
 }

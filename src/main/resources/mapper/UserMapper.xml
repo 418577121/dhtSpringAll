@@ -6,4 +6,8 @@
     <select id="selectAllUser" resultType="TestUser">
       select * from test_user;
     </select>
+
+    <insert id="insertUser">
+        insert into test_user(name,age,address,phone) values(#{name},#{age},#{address},#{phone});
+    </insert>
 </mapper>

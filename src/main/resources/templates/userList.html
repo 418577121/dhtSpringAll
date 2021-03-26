@@ -24,11 +24,16 @@
         <td th:text="${user.address}"></td>
         <td th:text="${user.phone}"></td>
     </tr>
-
     </tbody>
 </table>
+
+<div class="layui-container">
+    <button class="layui-btn" id="addUser">添加</button>
+</div>
 </body>
+
 <script src="layui-v2.5.6/layui/layui.js"></script>
+<script src="js/jquery.min.js"></script>
 <script>
     //一般直接写在一个js文件中
     layui.use(['layer', 'form'], function(){
@@ -37,5 +42,13 @@
 
         //layer.msg('Hello World');
     });
+    $("#addUser").click(function () {
+      alert("我被点击了")
+        layer.open({
+            title: '在线调试'
+            ,content: $('#layui-dht')
+        });
+    })
+
 </script>
 </html>
